@@ -1,11 +1,12 @@
-class ArticleController < ApplicationController
+class ArticlesController < ApplicationController
 
   def new
-
+    @article = Article.new
   end
 
   def edit
-
+    @article = Article.new(article_params)
+    @article.save
   end
 
   def show
@@ -16,8 +17,8 @@ class ArticleController < ApplicationController
 
   end
 
+  private
   def article_params
-
+    params.require(:article).permit(:title, :description)
   end
-
 end
